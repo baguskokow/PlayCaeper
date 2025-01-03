@@ -32,5 +32,9 @@ int main() {
 		i++;
 	}
 
+	int x = 27;
+	
+	std::cout << x % 26; 
+
 	return 0;
 }

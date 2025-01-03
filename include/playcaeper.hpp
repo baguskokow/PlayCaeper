@@ -11,8 +11,10 @@
 #include <iostream>
 #include <cstring>
  
-
 char indexOfAlphabet[26] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
+int indexOfLettersBeforeEncryption[100];
+std::string lettersAfterEncryption;
+int shift = 3; //Shifting
 
 /* Index Of Alphabet
  * 0 = A, 1 = B, 2 = C, 3 = D, 4 = E
@@ -22,6 +24,14 @@ char indexOfAlphabet[26] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K
  * 20 = U, 21 = V, 22 = W, 23 = X, 24 = Y
  * 25 = Z
 */ 
+
+void encryption(int temporaryIndexOfLetters) {
+	int indexAfterShifted = temporaryIndexOfLetters + shift % 26;	
+	lettersAfterEncryption +=indexOfAlphabet[indexAfterShifted];
+	//temporaryIndexOfLetters = 0;
+	//std::cout << "Heyy : " << indexAfterShifted << "\n";
+	indexAfterShifted = 0;
+}
 
 void convertFromLettersToIndexNumber(const char* words) {
 	char temporaryWords[25];
@@ -44,10 +54,12 @@ void convertFromLettersToIndexNumber(const char* words) {
 		for(int j = 0; j < size; j++) {
 			if(temporaryWords[j] == indexOfAlphabet[i]) {
 				//std::cout << "Pass\n";
-				std::cout << "Dari Alphabet : " << indexOfAlphabet[i] << " ";
-				std::cout << "Dari Inputan : " << temporaryWords[j] << "\n";
+				//std::cout << "Dari Alphabet : " << indexOfAlphabet[i] << " ";
+				//indexOfLettersBeforeEncryption[j] = i;
+				//std::cout << "Dari Inputan : " << temporaryWords[j] << " : " << indexOfLetters << "\n";
+				encryption(i);
 			} else {
-				//std::cout << "Fail\n";
+					//std::cout << "Error!\n";
 			}
 		}
 	}
@@ -83,6 +95,8 @@ void convertFromSentenceToWords(const char* sentences) {
 }
 
 
-int encrypt() {
-	
-}
+
+
+
+
+
